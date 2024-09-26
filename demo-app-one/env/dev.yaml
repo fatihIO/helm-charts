@@ -1,0 +1,24 @@
+replicaCount: 1
+namespace: dev
+
+resources:
+  requests:
+    memory: 128Mi
+    cpu: 200m
+  limits:
+    memory: 512Mi
+    cpu: 400m
+
+service:
+  type: NodePort
+  ports:
+  - name: http
+    port: 80
+    targetPort: 5000
+    nodePort: 30080
+    protocol: TCP
+
+config:
+  message: "This is the dev environment"
+  bg_color: "black"
+  font_color: "white"

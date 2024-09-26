@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "demo-app-one.fullname" . }}
+  namespace: {{ .Values.namespace | default .Release.Namespace }}
+  labels:
+    {{- include "demo-app-one.labels" . | nindent 4 }}
+data:
+  demo-app-one: |
+    message={{ .Values.config.message }}
+    bg_color={{ .Values.config.bg_color }}
+    font_color={{ .Values.config.font_color }}
+

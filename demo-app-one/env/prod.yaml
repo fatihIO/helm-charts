@@ -1,0 +1,24 @@
+replicaCount: 2
+namespace: prod
+
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 400m
+  limits:
+    memory: 1024Mi
+    cpu: 600m
+
+service:
+  type: NodePort
+  ports:
+  - name: http
+    port: 80
+    targetPort: 5000
+    nodePort: 30090
+    protocol: TCP
+
+config:
+  message: "This is the prod environment"
+  bg_color: "white"
+  font_color: "purple"
